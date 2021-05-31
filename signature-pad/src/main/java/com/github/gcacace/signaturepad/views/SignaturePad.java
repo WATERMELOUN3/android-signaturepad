@@ -37,25 +37,25 @@ public class SignaturePad extends View {
     private float mLastTouchY;
     private float mLastVelocity;
     private float mLastWidth;
-    private RectF mDirtyRect;
+    private final RectF mDirtyRect;
     private Bitmap mBitmapSavedState;
 
     private final SvgBuilder mSvgBuilder = new SvgBuilder();
 
     // Cache
-    private List<TimedPoint> mPointsCache = new ArrayList<>();
-    private ControlTimedPoints mControlTimedPointsCached = new ControlTimedPoints();
-    private Bezier mBezierCached = new Bezier();
+    private final List<TimedPoint> mPointsCache = new ArrayList<>();
+    private final ControlTimedPoints mControlTimedPointsCached = new ControlTimedPoints();
+    private final Bezier mBezierCached = new Bezier();
 
     //Configurable parameters
     private int mMinWidth;
     private int mMaxWidth;
     private float mVelocityFilterWeight;
     private OnSignedListener mOnSignedListener;
-    private boolean mClearOnDoubleClick;
+    private final boolean mClearOnDoubleClick;
 
     //Double click detector
-    private GestureDetector mGestureDetector;
+    private final GestureDetector mGestureDetector;
 
     //Default attribute values
     private final int DEFAULT_ATTR_PEN_MIN_WIDTH_PX = 3;
@@ -64,7 +64,7 @@ public class SignaturePad extends View {
     private final float DEFAULT_ATTR_VELOCITY_FILTER_WEIGHT = 0.9f;
     private final boolean DEFAULT_ATTR_CLEAR_ON_DOUBLE_CLICK = false;
 
-    private Paint mPaint = new Paint();
+    private final Paint mPaint = new Paint();
     private Bitmap mSignatureBitmap = null;
     private Canvas mSignatureBitmapCanvas = null;
 
@@ -183,7 +183,7 @@ public class SignaturePad extends View {
         mSvgBuilder.clear();
         mPoints = new ArrayList<>();
         mLastVelocity = 0;
-        mLastWidth = (mMinWidth + mMaxWidth) / 2;
+        mLastWidth = ((float)mMinWidth + mMaxWidth) / 2;
 
         if (mSignatureBitmap != null) {
             mSignatureBitmap = null;
