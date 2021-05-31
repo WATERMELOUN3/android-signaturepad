@@ -16,7 +16,7 @@ public class ViewCompat {
     public static boolean isLaidOut(View view) {
         // Future (API19+)...
         if (Build.VERSION.SDK_INT >= 19) {
-            return view.isLaidOut();
+            return view.isLaidOut() && view.getWidth() > 0 && view.getHeight() > 0;
         }
         // Legacy...
         return view.getWidth() > 0 && view.getHeight() > 0;
